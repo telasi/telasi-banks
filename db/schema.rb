@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120105120306) do
+ActiveRecord::Schema.define(:version => 20120105141516) do
+
+  create_table "banks", :force => true do |t|
+    t.string   "name"
+    t.string   "mfo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "banks", ["name"], :name => "index_banks_on_name", :unique => true
 
   create_table "banks4dd", :primary_key => "mfo", :force => true do |t|
     t.string "name", :limit => 100, :null => false
