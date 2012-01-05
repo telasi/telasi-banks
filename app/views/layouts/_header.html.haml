@@ -1,0 +1,7 @@
+#header
+	%h1 სს თელასი
+	.user_box
+		- if get_current_user
+			#{ get_current_user.full_name } | #{ link_to 'გასვლა', logout_url, :confirm => 'ნამდვილად?' }
+		- else
+			#{ link_to 'შესვლა', login_url }

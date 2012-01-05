@@ -1,0 +1,19 @@
+development:
+  adapter: oracle_enhanced
+  host: 192.168.1.222
+  port: 1521
+  database: orcl
+  username: direct_debit
+  password: direct_debit
+
+test:
+  adapter: oracle_enhanced
+  host: 192.168.1.222
+  port: 1521
+  database: orcl
+  username: direct_debit
+  password: direct_debit
+
+production:
+  adapter: sqlite3
+  database: db/production.sqlite3

@@ -1,0 +1,5 @@
+- if model.errors.any?
+	.error_explanation
+		%ul
+			- model.errors.each do |k, v|
+				%li <strong>#{k}</strong>: #{v}

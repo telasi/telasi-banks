@@ -1,0 +1,70 @@
+$color_background: white
+$color_corporate: #ffaa00
+$color_corporate_minor: #0088cc
+
+*
+	margin: 0
+	padding: 0
+
+body
+	font-size: 100%
+	background-color: $color_background
+
+#header
+	position: relative
+	background-color: $color_corporate_minor
+	border-bottom: 3px solid $color_corporate
+	h1
+		color: white
+		font-size: 1.5em
+		padding: 0.5em
+	.user_box
+		font-size: 0.8em
+		position: absolute
+		top: 0px
+		right: 1em
+		padding: 0.5em
+		background-color: white
+#main
+	padding: 0.5em
+	h1
+		font-size: 1.4em
+		color: darken($color_corporate, 10%)
+		margin-bottom: 0.5em
+	form
+		background: lighten($color_corporate_minor, 50%)
+		padding: 0.25em 0.5em
+		border: 1px solid $color_corporate_minor
+		input[type=text], input[type=password]
+			border: 1px solid $color_corporate_minor
+			font-size: 1em
+			padding: 0.1em
+		.field
+			padding: 0.25em 0
+		.actions
+			padding: 0.25em
+			border: 1px solid $color_corporate
+			background: lighten($color_corporate, 25%)
+		.error_explanation
+			font-size: 0.9em
+			line-height: 1.2em
+			background: #ffcccc
+			border: 1px solid red
+			ul
+				list-style: none
+				padding: 0px
+				line-height: 16px
+				padding: 5px 5px 5px 5px
+				li
+					padding: 2px 2px 2px 21px
+					background: url(/assets/error.png) no-repeat 0 50%
+					color: red
+		.field_with_errors
+			label
+				color: red !important
+				font-weight: bold
+#footer
+	border-top: 3px solid $color_corporate
+	font-size: 0.8em
+	text-align: center
+	padding: 0.5em

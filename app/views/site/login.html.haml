@@ -1,0 +1,12 @@
+%h1= @title
+
+= form_tag(:url => login_url) do
+	.field
+		.label= label 'auth_email', 'ელ. ფოსტა'
+		.value= text_field_tag 'auth_email', params[:auth_email]
+	.field
+		.label= label 'auth_password', 'პაროლი'
+		.value= password_field_tag 'auth_password', params[:password]
+	.actions
+		= submit_tag 'სისტემაში შესვლა'
+	
