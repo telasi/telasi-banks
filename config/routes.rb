@@ -8,6 +8,7 @@ TelasiGe::Application.routes.draw do
     # banks
     match '/banks', :controller => :sysadmin, :action => :banks, :as => :sys_banks
     match '/new_bank', :controller => :sysadmin, :action => :new_bank, :as => :sys_new_bank
+    match '/edit_bank/:id', :controller => :sysadmin, :action => :edit_bank, :as => :sys_edit_bank
   end
 
   root :to => 'site#index'

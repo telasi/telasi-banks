@@ -31,10 +31,22 @@ class SysadminController < ApplicationController
     @title = 'ახალი ბანკი'
     if request.post?
       @bank = Bank.new(params[:bank])
-      redirect_to(home_url, :notice => 'ბანკი შექმნილია') if @bank.save
+      redirect_to(sys_banks_url, :notice => 'ბანკი შექმნილია') if @bank.save
     else
       @bank = Bank.new
     end
   end
 
+  # ბანკის თვისებების რედაქტირება.
+  #
+  # PUT sys/edit_bank/:id
+  # GET sys/edit_bank/:id
+  def edit_bank
+    @title = 'ბანკის რედაქტირება'
+    @bank = Bank.find(params[:id])
+    if request.put?
+      redirect_to(sys_banks_url, :notice => 'ბანკი შეცვლილია') if @bank.update_attributes(params[:bank])
+    end
+  end
+  
 end
