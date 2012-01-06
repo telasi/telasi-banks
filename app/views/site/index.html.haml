@@ -1,1 +1,4 @@
-this is INDEX
+- if authenticated?
+	= render :partial => 'site/index/home_auth'
+- else
+	= render :partial => 'site/index/home'

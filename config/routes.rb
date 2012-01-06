@@ -4,6 +4,7 @@ TelasiGe::Application.routes.draw do
   get '/logout', :controller => :site, :action => :logout, :as => :logout
 
   scope '/sys' do
+    get '/', :controller => :sysadmin, :action => :index, :as => :sys
     match '/new_user', :controller => :sysadmin, :action => :new_user, :as => :sys_new_user
     # banks
     match '/banks', :controller => :sysadmin, :action => :banks, :as => :sys_banks

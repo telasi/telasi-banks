@@ -1,5 +1,5 @@
 #header
-	%h1 სს თელასი
+	%h1 #{link_to 'სს თელასი', home_url}
 	.user_box
 		- if get_current_user
 			#{ get_current_user.full_name } | #{ link_to 'გასვლა', logout_url, :confirm => 'ნამდვილად?' }
