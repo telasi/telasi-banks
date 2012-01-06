@@ -1,0 +1,14 @@
+%h1= @title
+
+.page_actions
+	#{link_to '&larr; სიაში დაბრუნება'.html_safe, sys_banks_url}
+	| #{link_to 'შეცვლა', sys_edit_bank_url(@bank)}
+	| #{link_to 'წაშლა', sys_destroy_bank_url(@bank), :method => :delete, :confirm => 'ნამდვილად გინდათ წაშლა?', :class => :delete}
+
+%table.common
+	%tr
+		%th{:width => 200} დასახელება
+		%td{:width => 300}= @bank.name
+	%tr
+		%th ბანკის კოდი (MFO)
+		%td= @bank.mfo

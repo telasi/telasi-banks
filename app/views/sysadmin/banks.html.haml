@@ -10,7 +10,7 @@
 		%th{:width => 150}
 	- @banks.each do |bank|
 		%tr
-			%td= bank.name
+			%td= link_to bank.name, sys_bank_url(bank)
 			%td= bank.mfo
 			%td.item_actions
 				#{link_to 'შეცვლა', sys_edit_bank_url(bank)}

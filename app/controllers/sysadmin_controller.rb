@@ -38,11 +38,11 @@ class SysadminController < ApplicationController
   end
 
   # ბანკის თვისებების გამოტანა
-  def show_bank
+  def bank
     @title = 'ბანკის თვისებები'
     @bank = Bank.find(params[:id])
   end
-  
+
   # ბანკის თვისებების რედაქტირება.
   #
   # PUT sys/edit_bank/:id
@@ -51,7 +51,7 @@ class SysadminController < ApplicationController
     @title = 'ბანკის რედაქტირება'
     @bank = Bank.find(params[:id])
     if request.put?
-      redirect_to(sys_banks_url, :notice => 'ბანკი შეცვლილია') if @bank.update_attributes(params[:bank])
+      redirect_to(sys_bank_url(@bank), :notice => 'ბანკი შეცვლილია') if @bank.update_attributes(params[:bank])
     end
   end
 

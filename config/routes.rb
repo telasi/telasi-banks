@@ -8,7 +8,7 @@ TelasiGe::Application.routes.draw do
     # banks
     match '/banks', :controller => :sysadmin, :action => :banks, :as => :sys_banks
     match '/new_bank', :controller => :sysadmin, :action => :new_bank, :as => :sys_new_bank
-    get '/bank/:id', :controller => :sysadmin, :action => :show_bank, :as => :sys_show_bank
+    get '/bank/:id', :controller => :sysadmin, :action => :bank, :as => :sys_bank
     match '/edit_bank/:id', :controller => :sysadmin, :action => :edit_bank, :as => :sys_edit_bank
     delete '/bank/:id', :controller => :sysadmin, :action => :destroy_bank, :as => :sys_destroy_bank
   end
