@@ -5,11 +5,9 @@ $color_corporate_minor: #0088cc
 *
 	margin: 0
 	padding: 0
-
 body
 	font-size: 100%
 	background-color: $color_background
-
 #header
 	position: relative
 	background-color: $color_corporate_minor
@@ -28,7 +26,19 @@ body
 		padding: 0.5em
 		background-color: white
 #main
+	position: relative
 	padding: 0.5em
+	#notice
+		position: absolute
+		top: 5px
+		left: 0
+		right: 0
+		text-align: center
+		.inner
+			display: inline
+			color: white
+			background: orange
+			padding: 0.25em 1em
 	#top_links
 		padding: 0.5em
 		font-size: 0.9em
