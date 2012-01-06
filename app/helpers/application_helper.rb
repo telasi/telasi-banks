@@ -7,7 +7,7 @@ module ApplicationHelper
   def authenticated?
     not get_current_user.nil?
   end
-  
+
   def form_errors(model)
     controller.render_to_string(:partial => 'layouts/errors', :locals => { :model => model }).html_safe
   end
@@ -22,7 +22,7 @@ module ApplicationHelper
     sub_paths.each do |p|
       node = node.children[p]
     end
-    node_link(node).html_safe
+    %Q{<div class="applink"><div style="background: url(/assets/#{node.image}) no-repeat 0 50%;">#{node_link(node)}</div></div>}.html_safe
   end
 
   def links_to(path)
@@ -37,9 +37,9 @@ module ApplicationHelper
   end
 
   private
-  
+
   def node_link(node)
     %Q{<a href="#{node.path}">#{node.label}</a>}
   end
-  
+
 end

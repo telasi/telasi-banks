@@ -13,7 +13,7 @@ module Telasi
   BANKS_PATH = "#{SYS_PATH}/#{BANKS}"
 
   class App
-    attr_accessor :name, :label, :url, :parent, :children
+    attr_accessor :name, :label, :url, :parent, :children, :image
     def path
       if parent
         "#{parent.path}#{self.url}"
@@ -40,6 +40,7 @@ module Telasi
     node.name = name
     node.label = hash[:label]
     node.url = hash[:url]
+    node.image = hash[:image]
     node.children = {}
     (hash[:children] || {}).each do |key, value|
       node.children[key.to_s] = build_node(node, key.to_s, value)
@@ -54,10 +55,12 @@ module Telasi
       SYS => {
         :url => 'sys/',
         :label => 'ადმინისტრირება',
+        :image => 'admin.png',
         :children => {
           BANKS => {
             :url => 'banks/',
-            :label => 'ბანკები'
+            :label => 'ბანკები',
+            :image => 'banks.png'
           },
         },
       },

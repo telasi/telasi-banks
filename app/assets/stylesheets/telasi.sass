@@ -34,6 +34,19 @@ body
 		font-size: 0.9em
 		margin-bottom: 0.5em
 		border-bottom: 1px solid $color_corporate
+	.applink
+		padding: 10px
+		border: 1px solid #a0a0a0
+		background: #fafafa
+		display: inline-block
+		&:hover
+			border: 1px solid $color_corporate_minor
+			background: lighten($color_corporate_minor, 25%)
+		a
+			padding-left: 20px
+			color: black
+			text-shadow: 1px 1px 1px white
+			text-decoration: none
 	h1
 		font-size: 1.4em
 		color: darken($color_corporate, 10%)

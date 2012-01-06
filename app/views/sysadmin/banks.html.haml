@@ -16,4 +16,4 @@
 			%td= bank.mfo
 			%td.item_actions
 				#{link_to 'შეცვლა', sys_edit_bank_url(bank)}
-				#{link_to 'წაშლა', sys_destroy_bank_url(bank), :method => :delete, :confirm => 'ნამდვილად გინდათ ამ ბანკის წაშლა?', :class => :delete}
+				| #{link_to 'წაშლა', sys_destroy_bank_url(bank), :method => :delete, :confirm => 'ნამდვილად გინდათ ამ ბანკის წაშლა?', :class => :delete}
