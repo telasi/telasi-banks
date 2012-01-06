@@ -31,7 +31,7 @@ class SysadminController < ApplicationController
     @title = 'ახალი ბანკი'
     if request.post?
       @bank = Bank.new(params[:bank])
-      redirect_to(sys_banks_url, :notice => 'ბანკი შექმნილია') if @bank.save
+      redirect_to(sys_bank_url(@bank), :notice => 'ბანკი შექმნილია') if @bank.save
     else
       @bank = Bank.new
     end
