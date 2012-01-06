@@ -10,7 +10,11 @@ class SiteController < ApplicationController
     @title = 'მომხმარებლის ავტორიზაცია'
     if request.post?
       user = authenticate_from_params
-      redirect_to home_url if user
+      if user
+        redirect_to home_url
+      else
+        flash[:notice] = 'არასწორი ელფოსტა ან პაროლი'
+      end
     end
   end
 
