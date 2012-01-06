@@ -1,0 +1,18 @@
+= links_to(Telasi::USERS_PATH)
+%h1= @title
+.page_actions
+	= link_to 'ახალი მომხმარებელი', sys_new_user_url
+%table.common
+	%tr
+		%th{:width => 150} ელ. ფოსტა
+		%th{:width => 200} სახელი, გვარი
+		%th{:width => 150} მობილური
+		%th{:width => 150}
+	- @users.each do |user|
+		%tr
+			%td= link_to user.email, sys_user_url(user)
+			%td= user.full_name
+			%td= user.mobile
+			%td.item_actions
+				#{link_to 'შეცვლა', sys_edit_user_url(user)}
+				| #{link_to 'წაშლა', sys_destroy_user_url(user), :method => :delete, :confirm => 'ნამდვილად გინდათ წაშლა?', :class => :delete}

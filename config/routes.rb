@@ -5,7 +5,12 @@ TelasiGe::Application.routes.draw do
 
   scope '/sys' do
     get '/', :controller => :sysadmin, :action => :index, :as => :sys
-    match '/new_user', :controller => :sysadmin, :action => :new_user, :as => :sys_new_user
+    # users
+    get '/users', :controller => :sysadmin, :action => :users, :as => :sys_users
+    match '/users/new', :controller => :sysadmin, :action => :new_user, :as => :sys_new_user
+    get '/users/:id', :controller => :sysadmin, :action => :user, :as => :sys_user
+    match '/users/edit/:id', :controller => :sysadmin, :action => :edit_user, :as => :sys_edit_user
+    delete '/users/:id', :controller => :sysadmin, :action => :destroy_user, :as => :sys_destroy_user
     # banks
     match '/banks', :controller => :sysadmin, :action => :banks, :as => :sys_banks
     match '/banks/new', :controller => :sysadmin, :action => :new_bank, :as => :sys_new_bank

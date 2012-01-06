@@ -1,0 +1,23 @@
+= links_to(Telasi::USERS_PATH)
+%h1= @title
+.page_actions
+	#{link_to '&larr; სიაში დაბრუნება'.html_safe, sys_users_url}
+	| #{link_to 'შეცვლა', sys_edit_user_url(@user)}
+	| #{link_to 'წაშლა', sys_destroy_user_url(@user), :method => :delete, :confirm => 'ნამდვილად გინდათ წაშლა?', :class => :delete}
+%table.common
+	%tr
+		%th{:width => 200} ელ. ფოსტა
+		%td{:width => 300}= mail_to @user.email
+	%tr
+		%th სახელი, გვარი
+		%td= @user.full_name
+	%tr
+		%th მობილური
+		%td= @user.mobile
+	%tr
+		%th სისადმინია?
+		%td= @user.is_sysadmin ? 'კი' : 'არა'
+	%tr
+		%th თელასის თანამშრომელია?
+		%td= @user.is_internal ? 'კი' : 'არა'
+= timespamps(@user)

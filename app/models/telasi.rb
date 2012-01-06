@@ -5,12 +5,14 @@ module Telasi
 
   SYS = 'sys'
   BANKS = 'banks'
+  USERS = 'users'
 
   public
 
   HOME_PATH = ""
   SYS_PATH = "#{SYS}"
   BANKS_PATH = "#{SYS_PATH}/#{BANKS}"
+  USERS_PATH = "#{SYS_PATH}/#{USERS}"
 
   class App
     attr_accessor :name, :label, :url, :parent, :children, :image
@@ -62,6 +64,11 @@ module Telasi
             :label => 'ბანკები',
             :image => 'banks.png'
           },
+          USERS => {
+            :url => 'users/',
+            :label => 'მომხმარებლები',
+            :image => 'users.png'
+          }
         },
       },
     },

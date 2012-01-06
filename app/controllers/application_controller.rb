@@ -15,12 +15,12 @@ class ApplicationController < ActionController::Base
   #
   def get_current_user
     unless @__curr_user_initilized
-      #begin
+      begin
         authenticate_from_params
         @__curr_user = User.find(session[:user_id]) if session[:user_id]
-      #rescue
-      #  @__curr_user = nil  
-      #end
+      rescue
+        @__curr_user = nil  
+      end
       @__curr_user_initilized = true
     end
     @__curr_user

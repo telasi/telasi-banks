@@ -7,8 +7,5 @@
 	%body
 		= render :partial => 'layouts/header'
 		#main
-			- if notice
-				#notice
-					.inner= notice
 			= yield
 		= render :partial => 'layouts/footer'

@@ -1,4 +1,7 @@
 #header
+	- if notice
+		#notice
+			.inner= notice
 	%h1 #{link_to 'სს თელასი', home_url}
 	.user_box
 		- if get_current_user
