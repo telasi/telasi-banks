@@ -15,6 +15,14 @@ class SysadminController < ApplicationController
     end
   end
 
+  # ბანკების სიის გამოტანა.
+  #
+  #  GET sys/banks
+  def banks
+    @title = 'ბანკები'
+    @banks = Bank.all(:order => :name)
+  end
+
   # ახალი ბანკის გახსნა.
   #
   # POST sys/new_bank
@@ -28,5 +36,5 @@ class SysadminController < ApplicationController
       @bank = Bank.new
     end
   end
-  
+
 end

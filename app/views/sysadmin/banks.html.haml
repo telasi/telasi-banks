@@ -1,0 +1,12 @@
+%h1= @title
+
+%table.common
+	%tr
+		%th{:width => 250} დასახელება
+		%th{:width => 150} ბანკის კოდი (MFO)
+		%th{:width => 150}
+	- @banks.each do |bank|
+		%tr
+			%td= bank.name
+			%td= bank.mfo
+			%td XXX
