@@ -8,10 +8,10 @@ TelasiGe::Application.routes.draw do
     match '/new_user', :controller => :sysadmin, :action => :new_user, :as => :sys_new_user
     # banks
     match '/banks', :controller => :sysadmin, :action => :banks, :as => :sys_banks
-    match '/new_bank', :controller => :sysadmin, :action => :new_bank, :as => :sys_new_bank
-    get '/bank/:id', :controller => :sysadmin, :action => :bank, :as => :sys_bank
-    match '/edit_bank/:id', :controller => :sysadmin, :action => :edit_bank, :as => :sys_edit_bank
-    delete '/bank/:id', :controller => :sysadmin, :action => :destroy_bank, :as => :sys_destroy_bank
+    match '/banks/new', :controller => :sysadmin, :action => :new_bank, :as => :sys_new_bank
+    get '/banks/:id', :controller => :sysadmin, :action => :bank, :as => :sys_bank
+    match '/banks/edit/:id', :controller => :sysadmin, :action => :edit_bank, :as => :sys_edit_bank
+    delete '/banks/:id', :controller => :sysadmin, :action => :destroy_bank, :as => :sys_destroy_bank
   end
 
   root :to => 'site#index'
