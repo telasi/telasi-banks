@@ -1,25 +1,2 @@
 %h1= @title
-
-= form_for(@user, :url => sys_new_user_url) do |f|
-	= form_errors(@user)
-	.field
-		.label= f.label :email
-		.value= f.text_field :email
-	.field
-		.label= f.label :first_name
-		.value= f.text_field :first_name
-	.field
-		.label= f.label :last_name
-		.value= f.text_field :last_name
-	.field
-		.label= f.label :password
-		.value= f.password_field :password
-	.field
-		.value
-			= f.check_box :is_sysadmin
-			= f.label :is_sysadmin
-			= f.check_box :is_internal
-			= f.label :is_internal
-	.actions
-		= f.submit 'შენახვა'
-		
+= render :partial => 'sysadmin/forms/user', :locals => { :user => @user, :url => sys_new_user_url }		

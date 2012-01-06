@@ -15,4 +15,18 @@ class SysadminController < ApplicationController
     end
   end
 
+  # ახალი ბანკის გახსნა.
+  #
+  # POST sys/new_bank
+  #  GET sys/new_bank
+  def new_bank
+    @title = 'ახალი ბანკი'
+    if request.post?
+      @bank = Bank.new(params[:bank])
+      redirect_to(home_url, :notice => 'ბანკი შექმნილია') if @bank.save
+    else
+      @bank = Bank.new
+    end
+  end
+  
 end

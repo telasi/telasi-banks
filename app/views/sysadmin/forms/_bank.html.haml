@@ -1,0 +1,10 @@
+= form_for(bank, :url => url) do |f|
+	= form_errors(bank)
+	.field
+		.label= f.label :name, 'დასახელება'
+		.value= f.text_field :name
+	.field
+		.label= f.label :mfo, 'ბანკის კოდი (MFO)'
+		.value= f.text_field :mfo
+	.actions
+		= f.submit 'შენახვა'

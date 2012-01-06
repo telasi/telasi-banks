@@ -5,6 +5,7 @@ TelasiGe::Application.routes.draw do
 
   scope '/sys' do
     match '/new_user', :controller => :sysadmin, :action => :new_user, :as => :sys_new_user
+    match '/new_bank', :controller => :sysadmin, :action => :new_bank, :as => :sys_new_bank
   end
 
   root :to => 'site#index'
