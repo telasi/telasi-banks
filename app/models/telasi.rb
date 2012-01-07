@@ -7,6 +7,7 @@ module Telasi
   BANKS = 'banks'
   USERS = 'users'
   BANK_HOME = 'bank-{{bank_id}}'
+  BANK_CUST = 'cust'
 
   CLASS_MAPPING = {
     'bank' => Bank
@@ -22,6 +23,7 @@ module Telasi
   SYS_USERS_PATH = "#{SYS_PATH}/#{USERS}"
   # ბანკის სერვისები
   BANK_HOME_PATH = "#{BANK_HOME}"
+  BANK_CUST_PATH = "#{BANK_HOME_PATH}/#{BANK_CUST}"
 
   class Node
     attr_writer :label, :url
@@ -39,7 +41,7 @@ module Telasi
     # კვანძის მისამართის პოვნა
     def path(params = {})
       if parent
-        "#{parent.path}#{self.url(params)}"
+        "#{parent.path(params)}#{self.url(params)}"
       else
         self.url(params)
       end
@@ -56,10 +58,8 @@ module Telasi
 
     def url(params = {})
       if self.dynamic
-        puts "DYNAMIC!!"
         id = obj_id(params)
         "#{self.dynamic}-#{id}/"
-        #get_object(params).to_s
       else
         @url
       end
@@ -127,7 +127,14 @@ module Telasi
       },
       BANK_HOME => {
         :dynamic => 'bank',
-        :image => 'bank.png'
+        :image => 'bank.png',
+        :children => {
+          BANK_CUST => {
+            :url => 'cust/',
+            :label => 'აბონენტები',
+            :image => 'bank_cust.png'
+          }
+        }
       }
     },
   }

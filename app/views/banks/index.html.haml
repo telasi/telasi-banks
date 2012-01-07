@@ -1,6 +1,3 @@
 = links_to(Telasi::BANK_HOME_PATH)
 %h1= @title
-%p
-	აქ თავმოყრილია ყველა სერვისი <strong>#{@bank.name}</strong>-თვის!
-%p
-	თქვენი ბანკის კოდია: #{params[:bank_id]}
+= application(Telasi::BANK_CUST_PATH)

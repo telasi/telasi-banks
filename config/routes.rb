@@ -23,6 +23,9 @@ TelasiGe::Application.routes.draw do
   # ბანკის სერვისები
   scope '/bank-:bank_id' do
     get '/', :controller => :banks, :action => :index, :as => :bank_home
+    scope 'cust' do
+      get '/', :controller => :banks, :action => :cust_index, :as => :bank_cust_home
+    end
   end
 
   root :to => 'site#index'

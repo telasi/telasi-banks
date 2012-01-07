@@ -16,7 +16,8 @@ module ApplicationHelper
     controller.render_to_string(:partial => 'layouts/timespamps', :locals => { :model => model }).html_safe
   end
 
-  def application(path, params = {})
+  def application(path, params = nil)
+    params ||= request.params
     sub_paths = path.split('/')
     node = Telasi.get_tree
     sub_paths.each do |p|
