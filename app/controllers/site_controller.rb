@@ -1,9 +1,9 @@
 # encoding: utf-8
-
 class SiteController < ApplicationController
 
   def index
     @title = 'საწყისი'
+    @banks = Bank.all(:order => :name)
   end
 
   def login

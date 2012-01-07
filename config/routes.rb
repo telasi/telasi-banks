@@ -20,5 +20,10 @@ TelasiGe::Application.routes.draw do
     delete '/banks/:id', :controller => :sysadmin, :action => :destroy_bank, :as => :sys_destroy_bank
   end
 
+  # ბანკის სერვისები
+  scope '/bank-:bank_id' do
+    get '/', :controller => :banks, :action => :index, :as => :bank_home
+  end
+
   root :to => 'site#index'
 end
