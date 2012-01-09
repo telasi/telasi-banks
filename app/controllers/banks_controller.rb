@@ -10,11 +10,13 @@ class BanksController < ApplicationController
   end
 
   # ბანკის აბონენტების მართვის გვერდი
+  #
   # GET /bank-:bank_id/cust
   def cust_index
     @title = "აბონენტების მართვა"
+    @customer = Customer.find(1)
   end
-  
+
   private
 
   # ბანკის ინიციალიზაცია გვერდის ჩატვირთვისას

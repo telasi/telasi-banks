@@ -1,6 +1,8 @@
 # encoding: utf-8
 module Telasi
 
+  CUSTOMERS_TABLE = 'customer'
+
   private
 
   SYS = 'sys'

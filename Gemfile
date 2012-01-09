@@ -6,6 +6,8 @@ gem 'activerecord-oracle_enhanced-adapter', '~> 1.4.0'
 gem 'jruby-openssl'
 gem 'json'
 gem 'haml'
+gem 'warbler', '~> 1.3.2'
+gem 'jruby-rack', '1.0.10'
 
 # Gems used only for assets and not required
 # in production environments by default.

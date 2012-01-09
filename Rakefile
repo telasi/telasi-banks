@@ -5,3 +5,7 @@
 require File.expand_path('../config/application', __FILE__)
 
 TelasiGe::Application.load_tasks
+
+#require 'warbler'
+#Warbler::Task.new
+#task :war => "assets:precompile"
