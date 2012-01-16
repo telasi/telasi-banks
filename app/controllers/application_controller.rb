@@ -1,6 +1,12 @@
 # encoding: utf-8
 class ApplicationController < ActionController::Base
+  before_filter :auth_filter
   protect_from_forgery
+
+  # რა რაოდენობის მონაცემის გამოტანაა შესძლებელი 1 გვერდზე
+  MAX_PER_PAGE = 100
+  # ერთ გვერდზე გამოტანის საწყისი მნიშვნელობა
+  DEFAULT_PER_PAGE = 10
 
   # პირველ რიგში ამოწმებს მოთხოვნის პარამეტრების წყვილს:
   # <tt>auth_email</tt>, <tt>auth_password</tt>.
@@ -35,4 +41,28 @@ class ApplicationController < ActionController::Base
     user
   end
 
+  def per_page
+    pp = params[:per_page] || DEFAULT_PER_PAGE
+    pp = MAX_PER_PAGE if pp.to_i > MAX_PER_PAGE
+    pp
+  end
+
+  private
+
+  def need_authorize
+    controller_name != 'site' and get_current_user.nil? and User.count > 0
+  end
+
+  # ავტორიზაციის ფილტრი.
+  #
+  def auth_filter
+    if need_authorize
+      respond_to do |format|
+        format.html { redirect_to login_url, :notice => 'გაიარეთ ავტორიზაცია' }
+        format.xml  { render :xml => '<?xml version="1.0" encoding="utf-8"?><error>Authentication required!</error>' }
+      end
+    end
+    
+  end
+  
 end

@@ -1,16 +1,19 @@
 = links_to(Telasi::BANK_CUST_PATH)
 %h1= @title
 .page_actions
-	= link_to 'აბონენტის დამატება', bank_find_customer_url
+	#{link_to 'აბონენტის დამატება', bank_find_customer_url}
+	| #{link_to 'XML ფორმატი', bank_cust_home_url(:format => :xml, :page => params[:page], :per_page => params[:per_page])}
 %table.common
 	%tr
 		%th{:width => 150} ნომერი
 		%th{:width => 250} დასახელება
+		%th{:width => 100} ვალი
 		%th{:width => 100}
 	- @customers.each do |cust|
 		%tr
 			%td= cust.customer.accnumb_ka
 			%td= cust.customer.custname_ka
+			%td.number= number_format(cust.customer.balance)
 			%td.item_actions
 				= link_to 'წაშლა', bank_remove_customer_url(:id=>cust.id), :class=> :delete, :method => :delete, :confirm => 'ნამდვილად გინდათ აბონენტის წაშლა?'
 .digg_pagination

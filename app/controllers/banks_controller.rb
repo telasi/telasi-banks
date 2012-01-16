@@ -1,7 +1,6 @@
 # encoding: utf-8
 class BanksController < ApplicationController
   before_filter :init_bank
-
   # ბანკის საწყისი გვერდი
   #
   # GET /bank-:bank_id
@@ -13,8 +12,11 @@ class BanksController < ApplicationController
   #
   # GET /bank-:bank_id/cust
   def cust_index
-    @title = "აბონენტების მართვა"
-    @customers = BankCustomer.where(:bank_id => @bank.id).paginate(:page => params[:page], :per_page => 10)
+    @customers = BankCustomer.where(:bank_id => @bank.id).paginate(:page => params[:page], :per_page => per_page)
+    respond_to do |format|
+      format.html { @title = "აბონენტების მართვა" }
+      format.xml {  }
+    end
   end
 
   # GET
@@ -48,7 +50,7 @@ class BanksController < ApplicationController
     @bank_customer.destroy
     redirect_to bank_cust_home_url, :notice => 'აბონენტი წაშლილია'
   end
-  
+
   private
 
   # ბანკის ინიციალიზაცია გვერდის ჩატვირთვისას
