@@ -18,7 +18,7 @@
 = timespamps(@bank)
 
 %h2 მომხმარებლები
-%p მომხმარებლები, რომლებსაც შეუძლიათ ამ ბანკთან მუშაობა:
+%p მომხმარებლები, რომლებსაც შეუძლიათ შემდეგ ბანკთან მუშაობა:
 .page_actions
 	#{link_to 'მომხმარებლის დამატება', sys_add_bankuser_url(@bank)}
 %table.common
@@ -28,6 +28,6 @@
 		%th{:width => 150}
 	- @bank.users.each do |u|
 		%tr
-			%td= mail_to u.email
+			%td= link_to u.email, sys_user_url(u)
 			%td= u.full_name
 			%td.item_actions= link_to 'წაშლა', sys_remove_bankuser_url(:bank_id => @bank.id, :user_id => u.id), :method => :delete, :class => :delete, :confirm => 'ნამდვილად გინდათ წაშალოთ მომხმარებელი?'

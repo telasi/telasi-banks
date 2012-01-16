@@ -21,3 +21,14 @@
 		%th თელასის თანამშრომელია?
 		%td= @user.is_internal ? 'კი' : 'არა'
 = timespamps(@user)
+
+%h2 ბანკები
+%p ამ მომხმარებელს შეუძლია შემდეგ ბანკებში მუშაობა:
+%table.common
+	%tr
+		%th{:width => 150} ბანკის კოდი
+		%th{:width => 300} ბანკის დასახელება
+	- @user.banks.each do |b|
+		%tr
+			%td= link_to b.mfo, sys_bank_url(b)
+			%td= b.name
