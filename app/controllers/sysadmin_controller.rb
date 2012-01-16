@@ -32,7 +32,7 @@ class SysadminController < ApplicationController
     @title = 'ახალი მომხმარებელი'
     if request.post?
       @user = User.new(params[:user])
-      redirect_to(home_url, :notice => 'მომხმარებელი შექმნილია') if @user.save
+      redirect_to(sys_users_url, :notice => 'მომხმარებელი შექმნილია') if @user.save
     else
       @user = User.new
     end

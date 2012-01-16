@@ -16,3 +16,18 @@
 		%td= @bank.mfo
 
 = timespamps(@bank)
+
+%h2 მომხმარებლები
+%p ამ მომხმარებლებს შეუძლიათ <strong>#{@bank.name}</strong>-თან მუშაობა:
+.page_actions
+	#{link_to 'მომხმარებლის დამატება'}
+%table.common
+	%tr
+		%th{:width => 150} ელ.ფოსტა
+		%th{:width => 200} სახელი
+		%th{:width => 150}
+	- @bank.users.each do |u|
+		%tr
+			%td= u.email
+			%td= u.full_name
+			%td
