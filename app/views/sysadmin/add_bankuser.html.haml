@@ -1,0 +1,11 @@
+= links_to(Telasi::SYS_BANKS_PATH)
+
+%h1 #{@title} > #{@bank.name}
+
+.page_actions
+	= link_to '&larr; ბანკში დაბრუნება'.html_safe, sys_bank_url(@bank)
+
+= form_tag do
+	ელექტრონული ფოსტა:
+	= text_field_tag :email, params[:email]
+	= submit_tag 'დამატება'

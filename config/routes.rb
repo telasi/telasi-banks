@@ -7,17 +7,23 @@ TelasiGe::Application.routes.draw do
   scope '/sys' do
     get '/', :controller => :sysadmin, :action => :index, :as => :sys
     # users
-    get '/users', :controller => :sysadmin, :action => :users, :as => :sys_users
-    match '/users/new', :controller => :sysadmin, :action => :new_user, :as => :sys_new_user
-    get '/users/:id', :controller => :sysadmin, :action => :user, :as => :sys_user
-    match '/users/edit/:id', :controller => :sysadmin, :action => :edit_user, :as => :sys_edit_user
-    delete '/users/:id', :controller => :sysadmin, :action => :destroy_user, :as => :sys_destroy_user
+    scope 'users' do
+      get '/', :controller => :sysadmin, :action => :users, :as => :sys_users
+      match 'new', :controller => :sysadmin, :action => :new_user, :as => :sys_new_user
+      get '/:id', :controller => :sysadmin, :action => :user, :as => :sys_user
+      delete '/:id', :controller => :sysadmin, :action => :destroy_user, :as => :sys_destroy_user
+      match '/edit/:id', :controller => :sysadmin, :action => :edit_user, :as => :sys_edit_user
+    end
     # banks
-    match '/banks', :controller => :sysadmin, :action => :banks, :as => :sys_banks
-    match '/banks/new', :controller => :sysadmin, :action => :new_bank, :as => :sys_new_bank
-    get '/banks/:id', :controller => :sysadmin, :action => :bank, :as => :sys_bank
-    match '/banks/edit/:id', :controller => :sysadmin, :action => :edit_bank, :as => :sys_edit_bank
-    delete '/banks/:id', :controller => :sysadmin, :action => :destroy_bank, :as => :sys_destroy_bank
+    scope '/banks' do
+      match '/', :controller => :sysadmin, :action => :banks, :as => :sys_banks
+      match '/new', :controller => :sysadmin, :action => :new_bank, :as => :sys_new_bank
+      get '/:id', :controller => :sysadmin, :action => :bank, :as => :sys_bank
+      delete '/:id', :controller => :sysadmin, :action => :destroy_bank, :as => :sys_destroy_bank
+      match '/edit/:id', :controller => :sysadmin, :action => :edit_bank, :as => :sys_edit_bank
+      match '/add_user/:id', :controller => :sysadmin, :action => :add_bankuser, :as => :sys_add_bankuser
+      delete '/remove_user/:bank_id/:user_id', :controller => :sysadmin, :action => :remove_bankuser, :as => :sys_remove_bankuser
+    end
   end
 
   # ბანკის სერვისები

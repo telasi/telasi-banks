@@ -114,4 +114,39 @@ class SysadminController < ApplicationController
     redirect_to sys_banks_url, :notice => 'ბანკი წაშლილია'
   end
 
+  # ბანკში მომხმარებლის დამატება
+  #
+  # GET, POST
+  def add_bankuser
+    @title = 'მომხმარებლის დამატება'
+    @bank = Bank.find(params[:id])
+    if request.post?
+      user = User.where(:email => params[:email]).first
+      if user
+        bu = BankUser.where(:bank_id => @bank.id, :user_id => user.id).first
+        if bu
+          flash.now[:notice] = 'ეს მომხმარებელი უკვე სიაშია!'
+        else
+          bu = BankUser.new
+          bu.bank = @bank
+          bu.user = user
+          bu.save!
+          redirect_to sys_bank_url(@bank), :notice => 'მომხმარებელი დამატებულია ბანკში!'
+        end
+      else
+        flash.now[:notice] = 'ასეთი მომხმარებელი ვერ მოიძებნა!'
+      end
+    end
+  end
+
+  # მომხმარებლის წაშლა ბანკიდან.
+  # 
+  # DELETE
+  def remove_bankuser
+    bu = BankUser.where(:bank_id => params[:bank_id], :user_id => params[:user_id]).first
+    bank = bu.bank
+    bu.destroy
+    redirect_to sys_bank_url(bank)
+  end
+
 end
