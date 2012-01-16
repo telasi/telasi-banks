@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   validates_presence_of :email, :first_name, :last_name, :hashed_password
+  has_many :bank_users
+  has_many :banks, :through => :bank_users
 
   def self.authenticate(email, pwd)
     user = User.where(:email => email).first
