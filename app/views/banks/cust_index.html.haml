@@ -1,4 +1,5 @@
 = links_to(Telasi::BANK_CUST_PATH)
 %h1= @title
 
-%p= @customer.accnumb
+%p
+	#{@customer.accnumb} -- #{@customer.custname_ka} -- #{@customer.custname}
