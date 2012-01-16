@@ -2,3 +2,16 @@
 %h1= @title
 .page_actions
 	= link_to 'აბონენტის დამატება', bank_find_customer_url
+%table.common
+	%tr
+		%th{:width => 150} ნომერი
+		%th{:width => 250} დასახელება
+		%th{:width => 100}
+	- @customers.each do |cust|
+		%tr
+			%td= cust.customer.accnumb_ka
+			%td= cust.customer.custname_ka
+			%td.item_actions
+				= link_to 'წაშლა', bank_remove_customer_url(:id=>cust.id), :class=> :delete, :method => :delete, :confirm => 'ნამდვილად გინდათ აბონენტის წაშლა?'
+.digg_pagination
+	= will_paginate @customers, :previous_label => '&larr; წინა', :next_label => 'შემდეგი &rarr;'

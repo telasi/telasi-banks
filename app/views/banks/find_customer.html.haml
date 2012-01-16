@@ -16,3 +16,5 @@
 		%tr
 			%th დასახელება
 			%td= @customer.custname_ka
+		%tr
+			%td{:colspan => 2}= link_to 'აბონენტის დამატება', bank_add_customer_url(:id => @customer.id), :method => :post, :confirm => 'დაადასტურეთ დამატება.'
