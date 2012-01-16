@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120105141516) do
+ActiveRecord::Schema.define(:version => 20120116091933) do
+
+  create_table "bank_customers", :force => true do |t|
+    t.integer  "customer_id", :precision => 38, :scale => 0
+    t.integer  "bank_id",     :precision => 38, :scale => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bank_customers", ["bank_id"], :name => "i_bank_customers_bank_id"
 
   create_table "banks", :force => true do |t|
     t.string   "name"

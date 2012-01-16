@@ -14,9 +14,17 @@ class BanksController < ApplicationController
   # GET /bank-:bank_id/cust
   def cust_index
     @title = "აბონენტების მართვა"
-    @customer = Customer.find(1)
+    @customers = BankCustomer.where(:bank_id => @bank.id)
   end
 
+  def find_customer
+    @title = "აბონენტის ძებნა"
+    if request.post?
+      @customer = Customer.where(:accnumb => Class.to_geo(params[:accnumb])).first
+      @not_found = true unless @customer
+    end
+  end
+  
   private
 
   # ბანკის ინიციალიზაცია გვერდის ჩატვირთვისას

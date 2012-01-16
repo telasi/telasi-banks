@@ -1,0 +1,18 @@
+= links_to(Telasi::BANK_CUST_PATH)
+%h1= @title
+= form_tag do
+	აბონენტის ნომერი:
+	= text_field_tag :accnumb, params[:accnumb]
+	= submit_tag 'ძებნა'
+
+- if @not_found
+	.not_found
+		ასეთი აბონენტი ვერ მოიძებნა
+-elsif @customer
+	%table.common.top_margin
+		%tr
+			%th{:width => 200} აბონენტის ნომერი
+			%td{:width => 300}= @customer.accnumb_ka
+		%tr
+			%th დასახელება
+			%td= @customer.custname_ka
