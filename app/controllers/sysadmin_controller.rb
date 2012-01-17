@@ -1,5 +1,17 @@
 # encoding: utf-8
 class SysadminController < ApplicationController
+  # ამოწმებს, რომ მხოლოდ სისტემურ ადმინისტრატორებს შეუძლიათ აქ შესვლა!
+  before_filter :verify_sysadmin
+
+  private
+
+  # ამოწმებს სისტემურ ადმინისტრატორს
+  #
+  def verify_sysadmin
+    redirect_to home_url, :notice => 'თქვენ არ ხართ ადმინისტრატორი' unless get_current_user.is_sysadmin
+  end
+
+  public
 
   # ადმინისტრირების საწყისი გვერდი.
   #

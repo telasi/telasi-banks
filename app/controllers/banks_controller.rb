@@ -1,6 +1,19 @@
 # encoding: utf-8
 class BanksController < ApplicationController
-  before_filter :init_bank
+  before_filter :verify_bank
+
+  private
+
+  # ბანკის ინიციალიზაცია გვერდის ჩატვირთვისას.
+  # ასევე ამოწმებს აქვს თუ არა მოცემულ მომხმარებელს ამ ბანკთან მუშაობის უფლება.
+  def verify_bank
+    @bank = Bank.find(params[:bank_id])
+    user = get_current_user
+    redirect_to home_url, :notice => 'არ გაქვთ ამ ბანკთან მუშაობის უფლება' unless user.banks.include?(@bank)
+  end
+
+  public
+
   # ბანკის საწყისი გვერდი
   #
   # GET /bank-:bank_id
@@ -49,13 +62,6 @@ class BanksController < ApplicationController
     @bank_customer = BankCustomer.find(params[:id])
     @bank_customer.destroy
     redirect_to bank_cust_home_url, :notice => 'აბონენტი წაშლილია'
-  end
-
-  private
-
-  # ბანკის ინიციალიზაცია გვერდის ჩატვირთვისას
-  def init_bank
-    @bank = Bank.find(params[:bank_id])
   end
 
 end
