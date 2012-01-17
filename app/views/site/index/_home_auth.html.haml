@@ -1,8 +1,10 @@
 = links_to(Telasi::HOME_PATH)
 
-%h2 აარჩიეთ ბანკი
-- @banks.each do |bank|
-	= application(Telasi::BANK_HOME_PATH, {'bank_id' => bank.id})
+- if @banks.any?
+	%h2 თქვენი ბანკები
+	- @banks.each do |bank|
+		= application(Telasi::BANK_HOME_PATH, {'bank_id' => bank.id})
 
-%h2 მართვა
-= application(Telasi::SYS_PATH)
+- if @show_admin
+	%h2 მართვა
+	= application(Telasi::SYS_PATH)

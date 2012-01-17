@@ -3,7 +3,17 @@ class SiteController < ApplicationController
 
   def index
     @title = 'საწყისი'
-    @banks = Bank.all(:order => :name)
+    user = get_current_user
+    if user
+      if user.is_sysadmin
+        @banks = Bank.all(:order => :name)
+        @show_admin = true
+      else
+        @banks = user.banks
+        @show_admin = false
+      end
+    end
+    
   end
 
   def login
