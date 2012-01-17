@@ -9,7 +9,9 @@ class BanksController < ApplicationController
   def verify_bank
     @bank = Bank.find(params[:bank_id])
     user = get_current_user
-    redirect_to home_url, :notice => 'არ გაქვთ ამ ბანკთან მუშაობის უფლება' unless user.banks.include?(@bank)
+    if not user.is_sysadmin and not user.banks.include?(@bank)
+      redirect_to home_url, :notice => 'არ გაქვთ ამ ბანკთან მუშაობის უფლება'
+    end
   end
 
   public
