@@ -9,7 +9,7 @@ class Class
   def self.convert_text(text, from, to)
     if text
       txt = ""
-      text.split('').each do |c|
+      text.to_s.split('').each do |c|
         indx = from.index(c)
         if indx
           txt += to[indx]

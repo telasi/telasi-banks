@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 class ApplicationController < ActionController::Base
   before_filter :auth_filter
   protect_from_forgery

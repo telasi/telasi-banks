@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module SysadminHelper
 
   def number_format(num, prec = 2)

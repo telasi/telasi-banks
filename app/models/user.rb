@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class User < ActiveRecord::Base
   validates_presence_of :email, :first_name, :last_name, :hashed_password
   has_many :bank_users
@@ -11,11 +13,11 @@ class User < ActiveRecord::Base
     end
     user
   end
-  
+
   def password
     @password
   end
-  
+
   def password=(pwd)
     if pwd and not pwd.empty?
       self.salt = "salt#{rand}#{Time.now}xiop!"

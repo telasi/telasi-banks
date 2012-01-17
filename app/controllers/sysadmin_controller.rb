@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 class SysadminController < ApplicationController
   # ამოწმებს, რომ მხოლოდ სისტემურ ადმინისტრატორებს შეუძლიათ აქ შესვლა!
   before_filter :verify_sysadmin

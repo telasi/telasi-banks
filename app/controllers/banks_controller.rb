@@ -1,4 +1,5 @@
 # encoding: utf-8
+
 class BanksController < ApplicationController
   before_filter :verify_bank
 
