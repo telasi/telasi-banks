@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   # რა რაოდენობის მონაცემის გამოტანაა შესძლებელი 1 გვერდზე
-  MAX_PER_PAGE = 100
+  MAX_PER_PAGE = 1000
   # ერთ გვერდზე გამოტანის საწყისი მნიშვნელობა
   DEFAULT_PER_PAGE = 10
 

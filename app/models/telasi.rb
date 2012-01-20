@@ -3,6 +3,7 @@
 module Telasi
 
   CUSTOMERS_TABLE = 'customer'
+  TRASH_CUSTOMERS_TABLE = 'trashcustomer'
 
   private
 

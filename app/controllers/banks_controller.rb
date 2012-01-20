@@ -54,17 +54,36 @@ class BanksController < ApplicationController
   end
 
   # POST
+  private
+  def find_cust
+    if params[:id]
+      Customer.find(params[:id])
+    elsif params[:accnumb]
+      Customer.where(:accnumb => params[:accnumb]).first
+    end
+  end
+
+  public
   def add_customer
-    @customer = Customer.find(params[:id])
-    @bank_customer = BankCustomer.where(:customer_id => @customer.id, :bank_id => @bank.id).first
+    @customer = find_cust
+    @bank_customer = BankCustomer.where(:customer_id => @customer.id, :bank_id => @bank.id).first if @customer
     if @bank_customer
-      redirect_to bank_cust_home_url, :notice => 'ეს აბონენტი უკვე არის ბაზაში'
-    else
+      @is_error = true
+      @msg = "ეს აბონენტი უკვე არის თქვენს ბაზაში: #{@customer.accnumb_ka}"
+    elsif @customer
       @bank_customer = BankCustomer.new
       @bank_customer.bank = @bank
       @bank_customer.customer = @customer
       @bank_customer.save!
-      redirect_to bank_cust_home_url, :notice => 'აბონენტი დამატებულია'
+      @is_error = false
+      @msg = "აბონენტი დამატებულია: #{@customer.accnumb_ka}"
+    else
+      @is_error = true
+      @msg = "ასეთი აბონენტი არ არსებობს: #{params[:accnumb]}"
+    end
+    respond_to do |format|
+      format.html { redirect_to bank_cust_home_url, :notice => @msg }
+      format.xml  { }
     end
   end
 

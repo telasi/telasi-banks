@@ -9,15 +9,13 @@
 		//%th{:width => 250} დასახელება
 		%th{:width => 120} ვალი, დენი
 		%th{:width => 120} ვალი, დასუფ
-		%th{:width => 120} ვალი, წყალი
 		%th{:width => 100}
 	- @customers.each do |cust|
 		%tr
 			%td= link_to cust.customer.accnumb_ka, bank_cust_show_url(:id => cust.id)
 			//%td= cust.customer.custname_ka
-			%td.number= number_format(cust.balance)
-			%td.number= number_format(cust.balance_trash)
-			%td.number= number_format(cust.balance_water)
+			%td.number= number_format(cust.customer.balance)
+			%td.number= number_format(cust.trash_customer ? cust.trash_customer.curr_balance : '0.00')
 			%td.item_actions
 				= link_to 'წაშლა', bank_remove_customer_url(:id=>cust.id), :class=> :delete, :method => :delete, :confirm => 'ნამდვილად გინდათ აბონენტის წაშლა?'
 .digg_pagination

@@ -9,10 +9,7 @@
 		%td{:width => 150}= @customer.customer.accnumb
 	%tr
 		%th ვალი, დენი
-		%td= number_format(@customer.balance)
+		%td= number_format(@customer.customer.balance)
 	%tr
 		%th ვალი, დასუფთავება
-		%td= number_format(@customer.balance_trash)
-	%tr
-		%th ვალი, წყალი
-		%td= number_format(@customer.balance_water)
+		%td= number_format(@customer.trash_customer.curr_balance)
