@@ -108,7 +108,7 @@ module Telasi
   end
 
   APPLICATION_TREE = {
-    :url => '/',
+    :url => Service::SUB_URI,
     :label => 'საწყისი',
     :children => {
       SYS => {

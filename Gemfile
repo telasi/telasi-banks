@@ -6,7 +6,6 @@ gem 'activerecord-oracle_enhanced-adapter', '~> 1.4.0'
 gem 'ruby-oci8', '~> 2.0.6'
 gem 'json'
 gem 'haml'
-gem 'warbler', '~> 1.3.2'
 gem 'will_paginate', '~> 3.0'
 
 #gem 'jruby-openssl'

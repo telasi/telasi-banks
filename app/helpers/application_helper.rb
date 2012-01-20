@@ -25,7 +25,7 @@ module ApplicationHelper
     sub_paths.each do |p|
       node = node.find_child(p)
     end
-    %Q{<div class="applink"><div style="background: url(/assets/#{node.image}) no-repeat 0 50%;">#{node_link(node, params)}</div></div>}.html_safe
+    %Q{<div class="applink"><div style="background: url(#{Service::SUB_URI}assets/#{node.image}) no-repeat 0 50%;">#{node_link(node, params)}</div></div>}.html_safe
   end
 
   def links_to(path, params = nil)
