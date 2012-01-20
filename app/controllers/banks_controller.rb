@@ -35,6 +35,14 @@ class BanksController < ApplicationController
     end
   end
 
+  # აბონენტის თვისებების ნახვა
+  #
+  # GET /bank-:bank_id/:id
+  def cust_show
+    @customer = BankCustomer.find(params[:id])
+    @title = 'აბონენტის თვისებები'
+  end
+  
   # GET
   # POST
   def find_customer

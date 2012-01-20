@@ -5,15 +5,15 @@
 	| #{link_to 'XML ფორმატი', bank_cust_home_url(:format => :xml, :page => params[:page], :per_page => params[:per_page])}
 %table.common
 	%tr
-		%th{:width => 150} ნომერი
+		%th{:width => 150} აბ. ნომერი
 		//%th{:width => 250} დასახელება
-		%th{:width => 100} ვალი, დენი
-		%th{:width => 100} ვალი, დასუფ
-		%th{:width => 100} ვალი, წყალი
+		%th{:width => 120} ვალი, დენი
+		%th{:width => 120} ვალი, დასუფ
+		%th{:width => 120} ვალი, წყალი
 		%th{:width => 100}
 	- @customers.each do |cust|
 		%tr
-			%td= cust.customer.accnumb_ka
+			%td= link_to cust.customer.accnumb_ka, bank_cust_show_url(:id => cust.id)
 			//%td= cust.customer.custname_ka
 			%td.number= number_format(cust.balance)
 			%td.number= number_format(cust.balance_trash)

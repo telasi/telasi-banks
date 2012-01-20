@@ -1,0 +1,18 @@
+= links_to(Telasi::BANK_CUST_PATH)
+%h1= @title
+.page_actions
+	#{ link_to '&larr; სიაში დაბრუნება'.html_safe, bank_cust_home_url }
+	| #{link_to 'XML ფორმატში', bank_cust_show_url(:id => @customer.id, :format=>:xml)}
+%table.common
+	%tr
+		%th{:width => 150} აბ.ნომერი
+		%td{:width => 150}= @customer.customer.accnumb
+	%tr
+		%th ვალი, დენი
+		%td= number_format(@customer.balance)
+	%tr
+		%th ვალი, დასუფთავება
+		%td= number_format(@customer.balance_trash)
+	%tr
+		%th ვალი, წყალი
+		%td= number_format(@customer.balance_water)

@@ -1,7 +1,3 @@
 %customers{:total => @customers.total_entries, :offset => @customers.offset, :size => @customers.entries.size}
 	- @customers.each do |cust|
-		%customer
-			%id= cust.id
-			%number= cust.customer.accnumb_ka
-			%name= cust.customer.custname_ka
-			%balance= cust.customer.balance
+		= render :partial => 'banks/customer', :locals => {:cust => cust}
