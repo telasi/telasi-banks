@@ -9,7 +9,7 @@ class SysadminController < ApplicationController
   # ამოწმებს სისტემურ ადმინისტრატორს
   #
   def verify_sysadmin
-    redirect_to home_url, :notice => 'თქვენ არ ხართ ადმინისტრატორი' unless get_current_user.is_sysadmin
+    redirect_to home_url, :notice => 'თქვენ არ ხართ ადმინისტრატორი' if get_current_user and !get_current_user.is_sysadmin
   end
 
   public

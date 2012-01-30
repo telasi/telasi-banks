@@ -3,6 +3,8 @@ TelasiGe::Application.routes.draw do
   match '/login', :controller => :site, :action => :login, :as => :login
   get '/logout', :controller => :site, :action => :logout, :as => :logout
 
+  get '/routes_doc', :controller => :site, :action => :routes_doc
+
   # ადმინისტრირების პროგრამა
   scope '/sys' do
     get '/', :controller => :sysadmin, :action => :index, :as => :sys
