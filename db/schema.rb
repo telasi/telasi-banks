@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120116124903) do
+ActiveRecord::Schema.define(:version => 20120208121008) do
 
   create_table "bank_customers", :force => true do |t|
     t.integer  "customer_id", :precision => 38, :scale => 0
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20120116124903) do
     t.boolean  "is_internal"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_moh"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

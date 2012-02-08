@@ -12,6 +12,7 @@ module Telasi
   USERS = 'users'
   BANK_HOME = 'bank-{{bank_id}}'
   BANK_CUST = 'cust'
+  MOH_HOME = 'moh'
 
   CLASS_MAPPING = {
     'bank' => Bank
@@ -28,6 +29,8 @@ module Telasi
   # ბანკის სერვისები
   BANK_HOME_PATH = "#{BANK_HOME}"
   BANK_CUST_PATH = "#{BANK_HOME_PATH}/#{BANK_CUST}"
+  # ჯანდაცვის სამინისტრო
+  MOH_HOME_PATH = "#{MOH_HOME}"
 
   class Node
     attr_writer :label, :url
@@ -139,7 +142,12 @@ module Telasi
             :image => 'bank_cust.png'
           }
         }
-      }
+      },
+      MOH_HOME => {
+        :url => 'moh/',
+        :label => 'ჯანდაცვა',
+        :image => 'hospital.png'
+      },
     },
   }
 

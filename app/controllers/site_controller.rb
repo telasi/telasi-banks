@@ -9,6 +9,9 @@ class SiteController < ApplicationController
       if user.is_sysadmin
         @banks = Bank.all(:order => :name)
         @show_admin = true
+        @show_moh = true
+      elsif user.is_moh
+        @show_moh = true
       else
         @banks = user.banks
         @show_admin = false

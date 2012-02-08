@@ -20,6 +20,9 @@
 	%tr
 		%th თელასის თანამშრომელია?
 		%td= @user.is_internal ? 'კი' : 'არა'
+	%tr
+		%th ჯანდაცვის სამინისტროდანაა?
+		%td= @user.is_moh ? 'კი' : 'არა'
 = timespamps(@user)
 
 %h2 ბანკები
