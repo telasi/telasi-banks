@@ -1,0 +1,14 @@
+= links_to(Telasi::MOH_CUST_PATH)
+%h1= @title
+= form_tag do
+	.field
+		.label= label_tag :from, 'საწყისი თარიღი (ddmmyyyy)'
+		.value= text_field_tag :from
+	.field
+		.label= label_tag :to, 'საბოლოო თარიღი (ddmmyyyy)'
+		.value= text_field_tag :to
+	.field
+		.label= label_tag :accnumb, 'აბონენტის ნომერი'
+		.value= text_field_tag :accnumb
+	.actions
+		= submit_tag 'ძებნა'

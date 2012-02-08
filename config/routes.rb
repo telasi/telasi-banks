@@ -44,6 +44,7 @@ TelasiGe::Application.routes.draw do
   # ჯანდაცხის სამინისტრო
   scope '/moh' do
     get '/', :controller => :moh, :action => :index, :as => :moh_home
+    match '/cust', :controller => :moh, :action => :cust, :as => :moh_cust
   end
 
   root :to => 'site#index'

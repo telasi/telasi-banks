@@ -5,4 +5,8 @@ class MohController < ApplicationController
     @title = 'ჯანდაცვის სამინისტროს სერვისები'
   end
 
+  def cust
+    @title = 'ინფორმაცია აბონენტზე'
+  end
+  
 end
