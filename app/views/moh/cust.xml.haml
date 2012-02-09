@@ -8,5 +8,5 @@
 		%custname= @customer.custname_ka
 		%from-date= @from.strftime('%d%m%Y')
 		%to-date= @to.strftime('%d%m%Y')
-		%payment= @payment
-		%subsidy= @subsidy
+		%payment= number_with_precision(@payment, :precision => 2)
+		%subsidy= number_with_precision(@subsidy, :precision => 2)

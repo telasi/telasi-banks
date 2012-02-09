@@ -41,10 +41,10 @@
 					%td= @to.strftime('%d/%m/%Y')
 				%tr
 					%th გადახდა
-					%td= @payment
+					%td= number_with_precision(@payment, :precision => 2)
 				%tr
 					%th შეღავათი
-					%td= @subsidy
+					%td= number_with_precision(@subsidy, :precision => 2)
 
 .doc
 	%h1 დოკუემენტაცია
@@ -86,7 +86,7 @@
 		შეცდომის შემთხვევაში დაბრუნდება შემდეგი სახის დოკუმენტი:
 	%pre
 		:escaped
-				<error>
+			<error>
 				<code>1</code>
 				<message>interval start date not defined</message>
 			</error>
@@ -101,7 +101,7 @@
 		დოკუმენტი:
 	%pre
 		:escaped
-				<customer-information>
+			<customer-information>
 				<accnumb>1234567</accnumb>
 				<custname>test customer</custname>
 				<from-date>01012010</from-date>
