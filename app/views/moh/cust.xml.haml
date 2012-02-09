@@ -1,0 +1,12 @@
+- if @err_code != 0
+	%error
+		%code= @err_code
+		%message= @err_msg
+- else
+	%customer-information
+		%accnumb= @customer.accnumb_ka
+		%custname= @customer.custname_ka
+		%from-date= @from.strftime('%d%m%Y')
+		%to-date= @to.strftime('%d%m%Y')
+		%payment= @payment
+		%subsidy= @subsidy

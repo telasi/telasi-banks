@@ -2,6 +2,8 @@
 
 module Telasi
 
+  ITEM_TABLE = 'item'
+  BILLOPERATION_TABLE = 'billoperation'
   CUSTOMERS_TABLE = 'customer'
   TRASH_CUSTOMERS_TABLE = 'trashcustomer'
 
