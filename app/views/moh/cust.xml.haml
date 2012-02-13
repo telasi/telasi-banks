@@ -6,6 +6,7 @@
 	%customer-information
 		%accnumb= @customer.accnumb_ka
 		%custname= @customer.custname_ka
+		%address= @customer.address.to_s
 		%from-date= @from.strftime('%d%m%Y')
 		%to-date= @to.strftime('%d%m%Y')
 		%payment= number_with_precision(@payment, :precision => 2)

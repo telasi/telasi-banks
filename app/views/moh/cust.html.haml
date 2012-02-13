@@ -31,8 +31,11 @@
 					%th აბონენტი
 					%td= @customer.accnumb_ka
 				%tr
-					%th აბონენტი
+					%th აბონენტის სახელი
 					%td= @customer.custname_ka
+				%tr
+					%th მისამართი
+					%td= @customer.address.to_s
 				%tr
 					%th საწყისი თარიღი
 					%td= @from.strftime('%d/%m/%Y')
@@ -86,7 +89,7 @@
 		შეცდომის შემთხვევაში დაბრუნდება შემდეგი სახის დოკუმენტი:
 	%pre
 		:escaped
-			<error>
+				<error>
 				<code>1</code>
 				<message>interval start date not defined</message>
 			</error>
@@ -101,9 +104,10 @@
 		დოკუმენტი:
 	%pre
 		:escaped
-			<customer-information>
+				<customer-information>
 				<accnumb>1234567</accnumb>
 				<custname>test customer</custname>
+				<address>0179 test street 10</address>
 				<from-date>01012010</from-date>
 				<to-date>01032012</to-date>
 				<payment>100.00</payment>
