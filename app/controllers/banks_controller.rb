@@ -68,17 +68,17 @@ class BanksController < ApplicationController
     @customer = find_cust
     @bank_customer = BankCustomer.where(:customer_id => @customer.id, :bank_id => @bank.id).first if @customer
     if @bank_customer
-      @is_error = true
+      @err_code = 1
       @msg = "ეს აბონენტი უკვე არის თქვენს ბაზაში: #{@customer.accnumb_ka}"
     elsif @customer
       @bank_customer = BankCustomer.new
       @bank_customer.bank = @bank
       @bank_customer.customer = @customer
       @bank_customer.save!
-      @is_error = false
+      @err_code = 0
       @msg = "აბონენტი დამატებულია: #{@customer.accnumb_ka}"
     else
-      @is_error = true
+      @err_code = 2
       @msg = "ასეთი აბონენტი არ არსებობს: #{params[:accnumb]}"
     end
     respond_to do |format|

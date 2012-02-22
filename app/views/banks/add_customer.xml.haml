@@ -1,4 +1,7 @@
-- if @is_error
-	%error= @msg
+- if @err_code == 0
+	%success
+		%message= @msg
 - else
-	%message= @msg
+	%error
+		%code= @err_code
+		%message= @msg
