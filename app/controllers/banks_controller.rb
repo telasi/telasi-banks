@@ -43,6 +43,8 @@ class BanksController < ApplicationController
   # GET /bank-:bank_id/:id
   def cust_show
     @customer = find_bank_customer
+    @pre_payments = Payment.where(:custkey => @customer.customer.custkey, :status => [0, 1])
+    @pre_trash_payments = TrashPayment.where(:custkey => @customer.customer.custkey, :status => [0, 1])
     @title = 'აბონენტის თვისებები'
   end
 
@@ -113,10 +115,10 @@ class BanksController < ApplicationController
 
   def find_bank_customer
     if params[:id]
-      BankCustomer.find(params[:id])
+      BankCustomer.where(:id => params[:id]).first
     elsif params[:accnumb]
       cust = Customer.where(:accnumb => params[:accnumb]).first
-      BankCustomer.where(:bank_id => params[:bank_id], :customer_id => cust.custkey) if cust
+      BankCustomer.where(:bank_id => params[:bank_id], :customer_id => cust.custkey).first if cust
     end
   end
 

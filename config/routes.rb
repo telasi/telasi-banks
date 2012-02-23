@@ -33,7 +33,7 @@ TelasiGe::Application.routes.draw do
     get '/', :controller => :banks, :action => :index, :as => :bank_home
     scope 'cust' do
       get '/', :controller => :banks, :action => :cust_index, :as => :bank_cust_home
-      get '/show/:id', :controller => :banks, :action => :cust_show, :as => :bank_cust_show
+      get '/show/', :controller => :banks, :action => :cust_show, :as => :bank_cust_show
       match '/find', :controller => :banks, :action => :find_customer, :as => :bank_find_customer
       post '/add', :controller => :banks, :action => :add_customer, :as => :bank_add_customer
       delete '/remove/:id', :controller => :banks, :action => :remove_customer, :as => :bank_remove_customer

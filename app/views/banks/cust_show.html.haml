@@ -14,3 +14,33 @@
 		%th ვალი, დასუფთავება
 		%td= number_format(@customer.trash_customer.curr_balance)
 = timespamps(@bank)
+
+- if @pre_payments and @pre_payments.any?
+	%h2 წინასწარი გადახდები
+	%table.common{:width => 400}
+		%thead
+			%tr
+				%th ნომერი
+				%th თარიღი
+				%th ოდენობა
+		%tbody
+			- @pre_payments.each do |pay|
+				%tr
+					%td= pay.billnumber_ka
+					%td= pay.paydate.strftime('%d-%b-%Y')
+					%td= number_format pay.amount
+- if @pre_trash_payments and @pre_trash_payments.any?
+	%h2 წინასწარი გადახდები
+	%table.common{:width => 400}
+		%thead
+			%tr
+				%th ნომერი
+				%th თარიღი
+				%th ოდენობა
+		%tbody
+			- @pre_trash_payments.each do |pay|
+				%tr
+					%td= pay.billnumber_ka
+					%td= pay.paydate.strftime('%d-%b-%Y')
+					%td= number_format pay.amount
+					
