@@ -3,6 +3,9 @@
 class BanksController < ApplicationController
   before_filter :verify_bank
 
+  NOT_FOUND = 'NOT_FOUND'
+  DUPLICATE = 'DUPLICATE'
+
   private
 
   # ბანკის ინიციალიზაცია გვერდის ჩატვირთვისას.
@@ -39,10 +42,10 @@ class BanksController < ApplicationController
   #
   # GET /bank-:bank_id/:id
   def cust_show
-    @customer = BankCustomer.find(params[:id])
+    @customer = find_bank_customer
     @title = 'აბონენტის თვისებები'
   end
-  
+
   # GET
   # POST
   def find_customer
@@ -55,6 +58,7 @@ class BanksController < ApplicationController
 
   # POST
   private
+
   def find_cust
     if params[:id]
       Customer.find(params[:id])
@@ -64,34 +68,56 @@ class BanksController < ApplicationController
   end
 
   public
+
   def add_customer
     @customer = find_cust
     @bank_customer = BankCustomer.where(:customer_id => @customer.id, :bank_id => @bank.id).first if @customer
     if @bank_customer
-      @err_code = 1
+      @err_code = DUPLICATE
       @msg = "ეს აბონენტი უკვე არის თქვენს ბაზაში: #{@customer.accnumb_ka}"
     elsif @customer
       @bank_customer = BankCustomer.new
       @bank_customer.bank = @bank
       @bank_customer.customer = @customer
       @bank_customer.save!
-      @err_code = 0
+      @err_code = nil
       @msg = "აბონენტი დამატებულია: #{@customer.accnumb_ka}"
     else
-      @err_code = 2
+      @err_code = NOT_FOUND
       @msg = "ასეთი აბონენტი არ არსებობს: #{params[:accnumb]}"
     end
     respond_to do |format|
       format.html { redirect_to bank_cust_home_url, :notice => @msg }
-      format.xml  { }
+      format.xml  { render :partial => 'layouts/message' }
     end
   end
 
   # DELETE
   def remove_customer
-    @bank_customer = BankCustomer.find(params[:id])
-    @bank_customer.destroy
-    redirect_to bank_cust_home_url, :notice => 'აბონენტი წაშლილია'
+    @bank_customer = find_bank_customer
+    if @bank_customer
+      @bank_customer.destroy
+      @err_code = nil
+      @msg = 'აბონენტი წაშლილია'
+    else
+      @err_code = NOT_FOUND
+      @msg = 'აბონენტი ვერ მოიძებნა'
+    end
+    respond_to do |format|
+      format.html { redirect_to bank_cust_home_url, :notice => @msg }
+      format.xml  { render :partial => 'layouts/message' }
+    end
+  end
+
+  private
+
+  def find_bank_customer
+    if params[:id]
+      BankCustomer.find(params[:id])
+    elsif params[:accnumb]
+      cust = Customer.where(:accnumb => params[:accnumb]).first
+      BankCustomer.where(:bank_id => params[:bank_id], :customer_id => cust.custkey) if cust
+    end
   end
 
 end

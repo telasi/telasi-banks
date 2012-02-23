@@ -1,0 +1,7 @@
+- if @err_code.nil?
+	%success
+		%message= @msg
+- else
+	%error
+		%code= @err_code
+		%message= @msg

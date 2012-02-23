@@ -8,6 +8,8 @@ module Telasi
   ADDRESS_TABLE = 'address'
   STREET_TABLE = 'street'
   TRASH_CUSTOMERS_TABLE = 'trashcustomer'
+  PAYMENT_TABLE = 'payments'
+  TRASH_PAYMENT_TABLE = 'trash_payments'
 
   private
 

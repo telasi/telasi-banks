@@ -1,7 +1,1 @@
-- if @err_code == 0
-	%success
-		%message= @msg
-- else
-	%error
-		%code= @err_code
-		%message= @msg
+= render :partial => 'layouts/message'
