@@ -10,6 +10,3 @@ ActiveSupport.on_load(:active_record) do
   end
 
 end
-
-#plsql.activerecord_class = ActiveRecord::Base
-ENV['NLS_LANG'] = 'AMERICAN_AMERICA.UTF8'

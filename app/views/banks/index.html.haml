@@ -47,6 +47,7 @@
 		:escaped
 				<customers offset="0" size="1" total="1">
 				<customer>
+					<id>20</id>
 					<number>0071772</number>
 					<balance>23.86</balance>
 					<balance_trash>7.55</balance_trash>
@@ -63,10 +64,10 @@
 		<code>customer</code> ტეგის შიგნით.
 		<code>customer</code> ტეგს შემდეგი სამი ელემენტი აქვს:
 	%ul
+		%li <code>id</code> &mdash; აბონენტის ID თქვენი ბანკისათვის,
 		%li <code>number</code> &mdash; აბონენტის ნომერი,
 		%li <code>balance</code> &mdash; აბონენტის მიმდინარე დავალიანება ელექტროენერგიაში,
 		%li <code>balance_trash</code> &mdash; აბონენტის მიმდინარე დავალიანება დასუფთავების სამსახურის მიმართ.
-		
 
 	%h2 ახალი აბონენტის დამატება
 	%p
@@ -85,15 +86,82 @@
 		პასუხს XML დოკუმენტის სახით, რომელსაც ექნება სახე:
 	%pre
 		:escaped
+				<success>
 				<message>აბონენტი დამატებულია: 0071772</message>
+			</success>
 	%p
 		ან შემდეგი სახის შეცდომის შეტყობინება:
 	%pre
 		:escaped
-				<error>ეს აბონენტი უკვე არის თქვენს ბაზაში: 0071772</error>,
+				<error>
+				<code>DUPLICATE</code>
+				<message>ეს აბონენტი უკვე არის თქვენს ბაზაში: 0071772</message>
+			</error>,
 	%p
 		შეცდომა დაბრუნდება ასევე იმ შემთხვევაში, თუ შესაბამისი ნომრით
 		ვერ მოხერხდა აბონენტის მოძებნა ჩვენს ბაზაში.
 	%pre
 		:escaped
-				<error>ასეთი აბონენტი არ არსებობს: 0071772</error>.
+				<error>
+				<code>NOT_FOUND</code>
+				<message>ასეთი აბონენტი არ არსებობს: 0071772</message>
+			</error>.
+
+	%h2 აბობენტის წაშლა
+	%p
+		თქვენი ბაზიდან აბონენტის წასაშლელად უნდა გააგზავნოთ <code>DELETE</code> ტიპის
+		მოთხოვნა შემდეგ მისამართზე: <code>http://${HOST_URL}/bank-${BANK_ID}/cust/remove.xml?accnumb=${ACCNUMB}</code>,
+		სადაც <code>${ACCNUMB}</code> არის წასაშლელი აბონენტის ნომერი. ანალოგიური შედეგის მიღება შეგიძლიათ
+		იგივე ტიპის მოთხოვნის <code>http://${HOST_URL}/bank-${BANK_ID}/cust/remove.xml?id=${ID}</code> მისამართზე
+		გამოგზავნით, სადაც <code>ID</code> არის ამ აბონენტის საიდენტიფიკაციო კოდი.
+	%p
+		თუ აბონენტი წაიშალა, დაგიბრუნდებათ შემდეგი სახის XML:
+	%pre
+		:escaped
+				<success>
+				<message>აბონენტი წაშლილია</message>
+			</success>
+	%p
+		თუ აბონენტი თქვენს ბაზაში არაა, მიიღებთ შემდეგი სახის შეტყობინებას:
+	%pre
+		:escaped
+				<error>
+				<code>NOT_FOUND</code>
+				<message>აბონენტი ვერ მოიძებნა</message>
+			</error>
+	
+	%h2 აბონენტის თვისებების და დაუდასტურებელი გადახდების ნახვა
+	%p
+		აბონენტის თვისებების და დაუდასტურებელი გადახდების სანახავად,
+		უნდა მიმართოთ <code>GET</code> ტიპის მოთხოვნით შემდეგ მისამართს:
+		<code>http://${HOST_URL}/bank-${BANK_ID}/cust/show.xml?accnumb=${ACCNUMB}</code>,
+		სადაც <code>${ACCNUMB}</code> არის წასაშლელი აბონენტის ნომერი. 
+		იგივე ინფორმაციის მიღება შესაძლებელია შემდეგი მისამართის გამოყენებით:
+		<code>http://${HOST_URL}/bank-${BANK_ID}/cust/show.xml?id=${ID}</code>,
+		სადაც <code>ID</code> არის ამ აბონენტის საიდენტიფიკაციო კოდი.
+	%p შედეგად დაგიბრუნდებათ შემდეგი სახის XML:
+	%pre
+		:escaped
+				<customer>
+				<id>36</id>
+				<number>1947503</number>
+				<balance>20.28</balance>
+				<balance_trash>6.65</balance_trash>
+				<pre-payments>
+					<payment>
+						<paydate>2011-01-02</paydate>
+						<amount>1.50</amount>
+						<docnumber>doc1</docnumber>
+					</payment>
+				</pre-payments>
+				<pre-trash-payments>
+					<payment>
+						<paydate>2011-01-02</paydate>
+						<amount>2.50</amount>
+						<docnumber>doc2</docnumber>
+					</payment>
+				</pre-trash-payments>
+			</customer>
+	%p
+		აღსანიშნავია, რომ <code>pre-payments</code> და <code>pre-trash-payments</code>
+		ტეგები არ გამოვა, თუ აბონენტს არ აქვს შესაბამისი გადახდა.

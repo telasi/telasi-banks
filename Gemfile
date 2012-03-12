@@ -3,14 +3,14 @@ source 'http://rubygems.org'
 gem 'rails', '~> 3.2'
 
 gem 'activerecord-oracle_enhanced-adapter', '~> 1.4.0'
-gem 'ruby-oci8', '~> 2.0.6'
+gem 'ruby-oci8', '~> 2.1.0'
+gem 'composite_primary_keys', '~> 5'
+#gem 'c12-commons', '~> 0.0.4'
+#gem 'rs.ge', '~>0.0.9'
+#gem 'telasi-ruby', '~> 0.0.1'
 gem 'json'
 gem 'haml'
 gem 'will_paginate', '~> 3.0'
-
-#gem 'jruby-openssl'
-#gem 'jruby-rack', '1.0.10'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -21,15 +21,3 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug'
