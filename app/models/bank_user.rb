@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding : utf-8 -*-
 
 class BankUser < ActiveRecord::Base
   belongs_to :user

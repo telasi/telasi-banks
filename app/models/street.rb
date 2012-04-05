@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding : utf-8 -*-
 
 class Street < ActiveRecord::Base
   set_table_name Telasi::STREET_TABLE

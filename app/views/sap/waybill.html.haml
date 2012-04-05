@@ -1,0 +1,60 @@
+= links_to(Telasi::SAP_WAYBILL_PATH)
+
+%h1 სასაქონლო ზედნადები
+
+.form
+	= form_tag sap_waybill_url do
+		შეკვეთის ნომერი:
+		= text_field_tag :number, params[:number]
+		= submit_tag 'ძებნა'
+- if @waybill
+	.page_actions
+		.large= link_to 'გადაგზავნა RS.GE-ზე', send_waybill_url(params[:number]), :method => :post, :confirm => 'ნამდვილად გინდათ გაგზავნა?'
+	%table.common.top_margin
+		%tr
+			%th.left ოპერაცია
+			%td= RS::WaybillType::NAMES[@waybill.type]
+		%tr
+			%th.left გამყიდველი (გამგზავნი)
+			%td
+				<strong>#{@waybill.seller_tin}</strong>
+				#{@waybill.seller_name}
+		%tr
+			%th.left მყიდველი (მიმღები)
+			%td
+				<strong>#{@waybill.buyer_tin}</strong>
+				#{@waybill.buyer_name}
+		%tr
+			%th.left ტრანსპორტირების დაწყების ადგილი
+			%td= @waybill.start_address
+		%tr
+			%th.left ტრანსპორტირების დასრულების ადგილი
+			%td= @waybill.start_address
+		%tr
+			%th.left ტრანსპორტირების სახე
+			%td
+				<strong>#{RS::TransportType::NAMES[@waybill.transport_type_id]}</strong>
+				#{@waybill.car_number}
+				(პირადი ნომერი: <strong>#{@waybill.driver_tin}</strong>)
+		%tr
+			%th.left ტრანსპორტირების საფასური
+			%td= number_format(@waybill.transportation_cost)
+	%table.common.top_margin{ :width => '100%' }
+		%tr
+			%th{:width => 25} №
+			%th დასახელება
+			%th{:width => 100} კოდი
+			%th{:width => 100} ზომის ერთეული
+			%th{:width => 100} რაოდენობა
+			%th{:width => 100} ერთეულის ფასი
+			%th{:width => 100} საქონლის ფასი
+		- index = 0
+		- @waybill.items.each do |item|
+			%tr
+				%td.right= (index += 1)
+				%td= item.prod_name
+				%td= item.bar_code
+				%td= item.unit_name
+				%td.right= number_format item.quantity, 5
+				%td.right= number_format item.price
+				%td.right= number_format item.price * item.quantity

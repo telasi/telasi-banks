@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 ENV['TZ'] = 'UTC'
 
 ActiveSupport.on_load(:active_record) do
@@ -10,3 +11,5 @@ ActiveSupport.on_load(:active_record) do
   end
 
 end
+
+Telasi::SAP::Base.establish_connection :sap

@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding : utf-8 -*-
 
 class User < ActiveRecord::Base
   validates_presence_of :email, :first_name, :last_name, :hashed_password

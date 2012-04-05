@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding : utf-8 -*-
 
 class Bank < ActiveRecord::Base
   validates_presence_of :name

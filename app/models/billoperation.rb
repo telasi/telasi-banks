@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding : utf-8 -*-
 
 class Billoperation < ActiveRecord::Base
   TYPE_PAYMENT = 3

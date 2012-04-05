@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding : utf-8 -*-
 
 class TrashPayment < ActiveRecord::Base
   set_table_name Telasi::TRASH_PAYMENT_TABLE

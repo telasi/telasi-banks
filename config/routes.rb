@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 TelasiGe::Application.routes.draw do
   get '/home', :controller => :site, :action => :index, :as => :home
   match '/login', :controller => :site, :action => :login, :as => :login
@@ -47,5 +48,12 @@ TelasiGe::Application.routes.draw do
     match '/cust', :controller => :moh, :action => :cust, :as => :moh_cust
   end
 
+  # SAP-ის სერვისები
+  scope '/sap' do
+    get '/', :controller => :sap, :action => :index, :as => :sap_home
+    match '/waybill', :controller => :sap, :action => :waybill, :as => :sap_waybill
+    post '/send_waybill/:number', :controller => :sap, :action => :send_waybill, :as => :send_waybill
+  end
+  
   root :to => 'site#index'
 end

@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding : utf-8 -*-
 
 module Telasi
 
@@ -20,6 +20,8 @@ module Telasi
   BANK_CUST = 'cust'
   MOH_HOME = 'moh'
   MOH_CUST = 'cust'
+  SAP_HOME = 'sap'
+  SAP_WAYBILL = 'waybill'
 
   CLASS_MAPPING = {
     'bank' => Bank
@@ -39,6 +41,9 @@ module Telasi
   # ჯანდაცვის სამინისტრო
   MOH_HOME_PATH = "#{MOH_HOME}"
   MOH_CUST_PATH = "#{MOH_HOME_PATH}/#{MOH_CUST}"
+  # SAP-ის გზები
+  SAP_HOME_PATH = "#{SAP_HOME}"
+  SAP_WAYBILL_PATH = "#{SAP_HOME_PATH}/#{SAP_WAYBILL}"
 
   class Node
     attr_writer :label, :url
@@ -163,6 +168,18 @@ module Telasi
           }
         }
       },
+      SAP_HOME => {
+        :url => 'sap/',
+        :label => 'SAP',
+        :image => 'sap.png',
+        :children => {
+          SAP_WAYBILL => {
+            :url => 'waybill/',
+            :label => 'სასაქონლო ზედნადები',
+            :image => 'waybill.png',
+          }
+        }
+      }
     },
   }
 

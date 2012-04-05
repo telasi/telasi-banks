@@ -8,3 +8,10 @@ production:
   database: "(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=tcp)(HOST=192.168.1.222)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=ORCL)))"
   username: direct_debit
   password: direct_debit
+sap:
+  adapter:  oracle_enhanced
+  host:     192.168.1.83
+  username: ilia
+  password: ilia2012
+  database: erd
+  port:     1527

@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding : utf-8 -*-
 
 class ApplicationController < ActionController::Base
   before_filter :auth_filter
@@ -57,13 +57,18 @@ class ApplicationController < ActionController::Base
   # ავტორიზაციის ფილტრი.
   #
   def auth_filter
-    if need_authorize
-      respond_to do |format|
-        format.html { redirect_to login_url, :notice => 'გაიარეთ ავტორიზაცია' }
-        format.xml  { render :xml => '<?xml version="1.0" encoding="utf-8"?><error>Authentication required!</error>' }
-      end
-    end
     
+    puts "USER: #{get_current_user.nil?}"
+    
+    if need_authorize
+
+      
+      
+#      respond_to do |format|
+#        format.html { redirect_to login_url, :notice => 'გაიარეთ ავტორიზაცია' }
+#        format.xml  { render :xml => '<?xml version="1.0" encoding="utf-8"?><error>Authentication required!</error>' }
+#      end
+    end
   end
   
 end

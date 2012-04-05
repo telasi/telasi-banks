@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding : utf-8 -*-
 
 class TrashCustomer < ActiveRecord::Base
   set_table_name Telasi::TRASH_CUSTOMERS_TABLE

@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding : utf-8 -*-
 
 class SiteController < ApplicationController
 
@@ -10,6 +10,7 @@ class SiteController < ApplicationController
         @banks = Bank.all(:order => :name)
         @show_admin = true
         @show_moh = true
+        @show_sap = true
       elsif user.is_moh
         @show_moh = true
       else

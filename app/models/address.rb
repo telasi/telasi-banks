@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding : utf-8 -*-
 
 class Address < ActiveRecord::Base
   set_table_name Telasi::ADDRESS_TABLE

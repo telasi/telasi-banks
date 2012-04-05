@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding : utf-8 -*-
 
 class Payment < ActiveRecord::Base
   set_table_name Telasi::PAYMENT_TABLE

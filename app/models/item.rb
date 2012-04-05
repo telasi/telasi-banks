@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding : utf-8 -*-
 
 class Item < ActiveRecord::Base
   set_table_name Telasi::ITEM_TABLE
