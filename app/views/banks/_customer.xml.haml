@@ -3,16 +3,16 @@
 	%number= cust.customer.accnumb_ka
 	%balance= cust.customer.balance
 	%balance_trash= cust.trash_customer ? cust.trash_customer.curr_balance : 0
-	- if defined?(pre_payments) and pre_payments and pre_payments.any?
+	- if cust.customer.pre_payments.any?
 		%pre-payments
-			- pre_payments.each do |pay|
+			- cust.customer.pre_payments.each do |pay|
 				%payment
 					%paydate= pay.paydate.strftime('%Y-%m-%d')
 					%amount= number_format pay.amount
 					%docnumber= pay.billnumber_ka
-	- if defined?(pre_trash_payments) and pre_trash_payments and pre_trash_payments.any?
+	- if cust.customer.pre_trash_payments.any?
 		%pre-trash-payments
-			- pre_trash_payments.each do |pay|
+			- cust.customer.pre_trash_payments.each do |pay|
 				%payment
 					%paydate= pay.paydate.strftime('%Y-%m-%d')
 					%amount= number_format pay.amount

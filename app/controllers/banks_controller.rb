@@ -31,7 +31,7 @@ class BanksController < ApplicationController
   #
   # GET /bank-:bank_id/cust
   def cust_index
-    @customers = BankCustomer.where(:bank_id => @bank.id).paginate(:page => params[:page], :per_page => per_page)
+    @customers = BankCustomer.where(:bank_id => @bank.id).paginate(page: params[:page], per_page: per_page)
     respond_to do |format|
       format.html { @title = "აბონენტების მართვა" }
       format.xml {  }
@@ -43,8 +43,6 @@ class BanksController < ApplicationController
   # GET /bank-:bank_id/:id
   def cust_show
     @customer = find_bank_customer
-    @pre_payments = Payment.where(:custkey => @customer.customer.custkey, :status => [0, 1])
-    @pre_trash_payments = TrashPayment.where(:custkey => @customer.customer.custkey, :status => [0, 1])
     @title = 'აბონენტის თვისებები'
   end
 
