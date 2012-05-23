@@ -12,4 +12,4 @@ ActiveSupport.on_load(:active_record) do
 
 end
 
-Telasi::SAP::Base.establish_connection :sap
+#Telasi::SAP::Base.establish_connection :sap
