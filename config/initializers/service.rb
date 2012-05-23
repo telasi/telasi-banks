@@ -1,3 +1,3 @@
 module Service
-  SUB_URI = ''
+  SUB_URI = '/'
 end
