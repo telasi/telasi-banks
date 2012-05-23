@@ -45,12 +45,14 @@
 		აღნიშნული მოთხოვნის საფუძველზე თქვენ დაგიბრუნდებათ XML ფორმატში დოკუმენტი, რომელიც შესაძლოა ასე გამოიყურებოდეს:
 	%pre
 		:escaped
-				<customers offset="0" size="1" total="1">
+			<customers offset="0" size="1" total="1">
 				<customer>
 					<id>20</id>
 					<number>0071772</number>
 					<balance>23.86</balance>
 					<balance_trash>7.55</balance_trash>
+					<pre_payment>10.00</pre_payment>
+					<pre_trash_payment>0</pre_trash_payment>
 				</customer>
 			</customers>
 	%p
@@ -60,14 +62,15 @@
 		%li <code>size</code> მოცემული სიის სიგრძე;
 		%li <code>total</code> აბონენტთა სრული რაოდენობა თქვენი ბანკისთვის.
 	%p
-		<code>customers</code>-ში თითოულ აბონენტზე ინფორმაცია განთავსებულია
-		<code>customer</code> ტეგის შიგნით.
-		<code>customer</code> ტეგს შემდეგი სამი ელემენტი აქვს:
+		თითოულ აბონენტზე ინფორმაცია განთავსებულია <code>customer</code> ტეგის შიგნით.
+		<code>customer</code> ტეგს შემდეგი ელემენტებისგან:
 	%ul
 		%li <code>id</code> &mdash; აბონენტის ID თქვენი ბანკისათვის,
 		%li <code>number</code> &mdash; აბონენტის ნომერი,
 		%li <code>balance</code> &mdash; აბონენტის მიმდინარე დავალიანება ელექტროენერგიაში,
-		%li <code>balance_trash</code> &mdash; აბონენტის მიმდინარე დავალიანება დასუფთავების სამსახურის მიმართ.
+		%li <code>balance_trash</code> &mdash; აბონენტის მიმდინარე დავალიანება დასუფთავების სამსახურის მიმართ,
+		%li <code>pre_payment</code> &mdash; გადახდა, რომელიც ჯერ არ დადასტურებულა,
+		%li <code>pre_trash_payment</code> &mdash; გადახდა, რომელიც ჯერ არ დადასტურებულა (დასუფთავება).
 
 	%h2 ახალი აბონენტის დამატება
 	%p
@@ -147,21 +150,6 @@
 				<number>1947503</number>
 				<balance>20.28</balance>
 				<balance_trash>6.65</balance_trash>
-				<pre-payments>
-					<payment>
-						<paydate>2011-01-02</paydate>
-						<amount>1.50</amount>
-						<docnumber>doc1</docnumber>
-					</payment>
-				</pre-payments>
-				<pre-trash-payments>
-					<payment>
-						<paydate>2011-01-02</paydate>
-						<amount>2.50</amount>
-						<docnumber>doc2</docnumber>
-					</payment>
-				</pre-trash-payments>
+				<pre_payment>10.00</pre_payment>
+				<pre_trash_payment>0</pre_trash_payment>
 			</customer>
-	%p
-		აღსანიშნავია, რომ <code>pre-payments</code> და <code>pre-trash-payments</code>
-		ტეგები არ გამოვა, თუ აბონენტს არ აქვს შესაბამისი გადახდა.
