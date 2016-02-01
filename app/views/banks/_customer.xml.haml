@@ -1,7 +1,7 @@
 %customer
 	%id= cust.id
 	%number= cust.customer.accnumb_ka
-	%balance= cust.customer.balance
+	%balance= cust.customer.real_balance
 	%balance_trash= cust.trash_customer ? cust.trash_customer.curr_balance : 0
 	%pre_payment= cust.customer.pre_payment
 	%pre_trash_payment= cust.customer.pre_trash_payment

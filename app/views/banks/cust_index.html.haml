@@ -14,7 +14,7 @@
 		%tr
 			%td= link_to cust.customer.accnumb_ka, bank_cust_show_url(:id => cust.id)
 			//%td= cust.customer.custname_ka
-			%td.number= number_format(cust.customer.balance)
+			%td.number= number_format(cust.customer.real_balance)
 			%td.number= number_format(cust.trash_customer ? cust.trash_customer.curr_balance : '0.00')
 			%td.item_actions
 				= link_to 'წაშლა', bank_remove_customer_url(:id=>cust.id), :class=> :delete, :method => :delete, :confirm => 'ნამდვილად გინდათ აბონენტის წაშლა?'

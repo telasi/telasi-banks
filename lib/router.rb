@@ -10,6 +10,7 @@ module Telasi
   TRASH_CUSTOMERS_TABLE = 'trashcustomer'
   PAYMENT_TABLE = 'payments'
   TRASH_PAYMENT_TABLE = 'trash_payments'
+  DEPOSIT_CUSTOMER_TABLE = 'zdepozit_cust'
 
   private
 
